@@ -55,6 +55,14 @@ export default {
     },
   },
 
+  generate: {
+    dir: '../docs'
+  },
+
+  router: {
+    base: `/${process.env.ROUTER_BASE}` || '/',
+  }
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   /* build: {
     loaders: {
