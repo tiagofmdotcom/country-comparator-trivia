@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "cross-env ROUTER_BASE= nuxt",
+    "build": "cross-env ROUTER_BASE= nuxt build",
+    "start": "cross-env ROUTER_BASE= nuxt start",
     "generate": "cross-env ROUTER_BASE=country-comparator-trivia nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
