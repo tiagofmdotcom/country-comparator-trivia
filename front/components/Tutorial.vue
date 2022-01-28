@@ -23,17 +23,22 @@
 
 <script>
 import questions from '@/helpers/questions'
-import countries from '@/helpers/countries'
 
 export default {
     name: 'NuxtTutorial',
+
+    props: {
+        selectedCountries: {
+            type: Array,
+            required: true,
+        },
+    },
 
     data: () => ({
         questionIndex: null,
         currentQuestion: {},
         comparationItems: [],
         selectedQuestions: [],
-        selectedCountries: [],
         selectedAnswer: null,
         // isQuestionAnswered: false,
         //
@@ -52,9 +57,9 @@ export default {
             if (newIdx >= this.selectedQuestions.length)
                 return (this.questionIndex = this.selectedQuestions.length - 1)
 
-            this.selectedAnswer = null;
+            this.selectedAnswer = null
 
-            const currentQuestion = this.selectedQuestions[newIdx];
+            const currentQuestion = this.selectedQuestions[newIdx]
             this.currentQuestion = Object.assign(
                 {},
                 this.currentQuestion,
@@ -87,15 +92,7 @@ export default {
     },
 
     created() {
-        // get 4 random countries
-        this.selectedCountries = countries
-            .map((x) => ({ x, r: Math.random() }))
-            .sort((a, b) => a.r - b.r)
-            .map((a) => a.x)
-            .slice(0, 4)
-            .map((q, index) => ({ ...q, ...{ index } }))
-
-        this.comparationItems = countries[0].prices.map((p) => ({
+        this.comparationItems = this.selectedCountries[0].prices.map((p) => ({
             id: p.item_id,
             name: p.item_name,
         }))
@@ -105,31 +102,45 @@ export default {
 
     methods: {
         getClass(country) {
-            if (this.selectedAnswer && Number.isInteger(this.selectedAnswer.index)) { // if user selected an answer
-                if (this.selectedAnswer?.index === country.index) { // and this button matches the selected answer
-                    if (this.selectedAnswer.isCorrect) { // use .primary if correct, or .error otherwise
-                        return 'primary';
+            if (
+                this.selectedAnswer &&
+                Number.isInteger(this.selectedAnswer.index)
+            ) {
+                // if user selected an answer
+                if (this.selectedAnswer?.index === country.index) {
+                    // and this button matches the selected answer
+                    if (this.selectedAnswer.isCorrect) {
+                        // use .primary if correct, or .error otherwise
+                        return 'primary'
                     } else {
-                        return 'error';
+                        return 'error'
                     }
 
-                // and this button matches the actual correct answer, use .primary  
-                } else if (this.selectedAnswer?.index !== country.index && country.isCorrect) {
-                    return 'primary';
+                    // and this button matches the actual correct answer, use .primary
+                } else if (
+                    this.selectedAnswer?.index !== country.index &&
+                    country.isCorrect
+                ) {
+                    return 'primary'
                 }
             }
 
             // no answer yet or not the correct answer
-            return 'secondary';
+            return 'secondary'
         },
 
         verifyAnswer(answer) {
             // TODO: make it computed
             this.selectedAnswer = answer
 
-            this.choosenAnswers.push({answer, questionId: this.currentQuestion.id})
+            this.choosenAnswers.push({
+                answer,
+                questionId: this.currentQuestion.id,
+            })
 
-            setTimeout(() => {this.questionIndex++;}, 1500);
+            setTimeout(() => {
+                this.questionIndex++
+            }, 1500)
         },
 
         getQuestion(itemId) {
