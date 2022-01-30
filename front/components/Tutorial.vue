@@ -7,7 +7,7 @@
                 v-for="(country, idx) in questionAnswers"
                 :key="idx"
                 :class="getClass(country)"
-                @click="verifyAnswer(country)"
+                @click="!selectedAnswer && verifyAnswer(country)"
             >
                 {{ country.index + 1 }}. {{ country.name }}
             </button>
@@ -22,33 +22,34 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import questions from '@/helpers/questions'
 
 export default {
     name: 'NuxtTutorial',
 
-    props: {
-        selectedCountries: {
-            type: Array,
-            required: true,
-        },
-    },
-
     data: () => ({
         questionIndex: null,
         currentQuestion: {},
         comparationItems: [],
-        selectedQuestions: [],
-        selectedAnswer: null,
-        // isQuestionAnswered: false,
-        //
-        questionAnswers: [],
-        choosenAnswers: [],
     }),
 
     computed: {
+        ...mapGetters({
+            selectedCountries: 'quiz/countries',
+            selectedQuestions: 'quiz/questions',
+            questionAnswers: 'quiz/answers',
+            choosenAnswers: 'quiz/choosenAnswers',
+        }),
+
         correctAnswer() {
             return this.questionAnswers.find((a) => a.isCorrect)
+        },
+
+        selectedAnswer() {
+            return this.choosenAnswers.find(
+                (a) => a.questionId === this.currentQuestion.id
+            )?.answer
         },
     },
 
@@ -56,8 +57,6 @@ export default {
         questionIndex(newIdx) {
             if (newIdx >= this.selectedQuestions.length)
                 return (this.questionIndex = this.selectedQuestions.length - 1)
-
-            this.selectedAnswer = null
 
             const currentQuestion = this.selectedQuestions[newIdx]
             this.currentQuestion = Object.assign(
@@ -67,7 +66,7 @@ export default {
             )
 
             let targetValue = null
-            this.questionAnswers = this.selectedCountries.map((c) => {
+            const questionAnswers = this.selectedCountries.map((c) => {
                 const currValue = c.prices.find(
                     (p) => p.item_id === currentQuestion.id
                 ).average_price
@@ -88,11 +87,13 @@ export default {
                     },
                 }
             })
+
+            this.$store.commit('quiz/SET_ANSWERS', questionAnswers)
         },
     },
 
     created() {
-        this.comparationItems = this.selectedCountries[0].prices.map((p) => ({
+        this.comparationItems = this.selectedCountries[0]?.prices.map((p) => ({
             id: p.item_id,
             name: p.item_name,
         }))
@@ -130,13 +131,14 @@ export default {
         },
 
         verifyAnswer(answer) {
-            // TODO: make it computed
-            this.selectedAnswer = answer
-
-            this.choosenAnswers.push({
+            const choosenAnswer = {
                 answer,
                 questionId: this.currentQuestion.id,
-            })
+            }
+
+            this.$store.commit('quiz/ADD_QUESTION_ANSWER', choosenAnswer)
+
+            // TODO: Perform some sort of suspense animation to hightlight correct/wrong answers
 
             setTimeout(() => {
                 this.questionIndex++
@@ -184,11 +186,7 @@ export default {
                     }
                 })
 
-            this.selectedQuestions = Object.assign(
-                [],
-                this.currentQuestion,
-                selectedQuestions
-            )
+            this.$store.commit('quiz/SET_QUESTIONS', selectedQuestions)
         },
     },
 }

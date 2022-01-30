@@ -108,7 +108,6 @@ export default {
                 svg.selectAll('.focused').classed('focused', (focused = false))
 
                 //Globe rotating
-
                 ;(function transition() {
                     d3.transition()
                         .duration(2500)

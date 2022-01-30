@@ -1,8 +1,8 @@
 <template>
     <div>
-        <Tutorial v-if="false" :selected-countries="selectedCountries" />
+        <Tutorial v-if="true" :selected-countries="selectedCountries" />
         <CountrySelector v-if="false" :selected-countries="selectedCountries" />
-        <EarthGlobe v-if="true" />
+        <EarthGlobe v-if="false" />
     </div>
 </template>
 
@@ -19,12 +19,14 @@ export default {
 
     created() {
         // get 4 random countries
-        this.selectedCountries = Object.values(countries)
+        const selectedCountries = Object.values(countries)
             .map((x) => ({ x, r: Math.random() }))
             .sort((a, b) => a.r - b.r)
             .map((a) => a.x)
             .slice(0, 4)
             .map((q, index) => ({ ...q, ...{ index } }))
+
+        this.$store.commit('quiz/SET_COUNTRIES', selectedCountries)
     },
 }
 </script>
