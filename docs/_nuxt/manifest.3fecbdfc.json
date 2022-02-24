@@ -1,7 +1,6 @@
 {
   "name": "country-compare",
   "short_name": "country-compare",
-  "description": "## Build Setup",
   "icons": [
     {
       "src": "/country-comparator-trivia/_nuxt/icons/icon_64x64.e3e9fb.png",
