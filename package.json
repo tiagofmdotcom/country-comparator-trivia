@@ -23,7 +23,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
     "@picocss/pico": "^1.4.4",
-    "chart.js": "2.9.4",
+    "chart.js": "3.7.1",
     "chartjs": "^0.3.24",
     "chota": "^0.8.0",
     "core-js": "^3.21.1",
