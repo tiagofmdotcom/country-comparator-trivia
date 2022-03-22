@@ -62,7 +62,7 @@ export default {
   },
 
   router: {
-    base: `/${process.env.ROUTER_BASE || "/"}`,
+    base: `/${process.env.ROUTER_BASE || ""}`,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
