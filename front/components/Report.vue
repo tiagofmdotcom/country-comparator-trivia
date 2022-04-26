@@ -9,7 +9,7 @@ src="https://clipart.world/wp-content/uploads/2020/12/Simple-Trophy-clipart-tran
         </div>
         <h1>Game Stats</h1>
         <hr>
-        <RadarChart :data="countriesPricesChart" :options="options" />
+        <RadarChart :data="countriesPricesChart" :options="options"/>
     </div>
 </template>
 <script>
@@ -60,11 +60,11 @@ export default {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: {
+            /* scales: {
                 r: {
                     display: false
                 }
-            },
+            }, */
             elements: {
                 point: {
                     radius: 1,
