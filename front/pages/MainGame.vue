@@ -2,7 +2,7 @@
     <div>
         <Quiz
             v-if="!gameFinished"
-            :selected-countries="selectedCountries"
+            :game-mode="$route.params.gameMode"
             @quiz:finished="showResults"
         />
 

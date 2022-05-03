@@ -51,6 +51,16 @@ export default {
         }
     },
 
+    props: {
+        gameMode: {
+            type: String,
+            validator: (val) => {
+                return ['SUSPENSE', 'NORMAL'].includes(val);
+            },
+            default: 'NORMAL'
+        }
+    },
+
     data: () => ({
         questionIndex: null,
         currentQuestion: {},
@@ -139,8 +149,13 @@ export default {
                 this.selectedAnswer &&
                 Number.isInteger(this.selectedAnswer.index)
             ) {
+                if(this.selectedAnswer?.index === country.index && this.gameMode === 'SUSPENSE') return 'primary'; // SUSPENSE game mode doesnt reveal correct/incorrect answers
+
                 // if user selected an answer
-                if (this.selectedAnswer?.index === country.index) {
+                if (
+                    this.selectedAnswer?.index === country.index && 
+                    this.gameMode === 'NORMAL'
+                ) {
                     // and this button matches the selected answer
                     if (this.selectedAnswer.isCorrect) {
                         // use .success if correct, or .error otherwise
@@ -152,7 +167,8 @@ export default {
                     // and this button matches the actual correct answer, use .success
                 } else if (
                     this.selectedAnswer?.index !== country.index &&
-                    country.isCorrect
+                    country.isCorrect &&
+                    this.gameMode === 'NORMAL'
                 ) {
                     return 'success'
                 }
@@ -171,7 +187,7 @@ export default {
 
             this.$store.commit('quiz/ADD_QUESTION_ANSWER', choosenAnswer)
 
-            this.answerReactionClass = answer.isCorrect ? 'correct' : 'incorrect'
+            this.answerReactionClass = this.gameMode === 'NORMAL' && (answer.isCorrect ? 'correct' : 'incorrect')
             // TODO: Perform some sort of suspense animation to hightlight correct/wrong answers
 
             setTimeout(() => {
