@@ -98,7 +98,7 @@ export default {
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: 'rgba(179,181,198,1)',
                         data: this.priceCategories.map(
-                            (pc) => this.countriesFiltered[country][pc].avg
+                            (pc) => this.countriesFiltered[country][pc]?.avg
                         ),
                     })
                 ),

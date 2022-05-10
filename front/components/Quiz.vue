@@ -212,7 +212,10 @@ export default {
             const questionAnswers = this.selectedCountries.map((c) => {
                 const currValue = c.prices.find(
                     (p) => p.item_id === currentQuestion.id
-                ).average_price
+                )?.average_price; // [1] some items might not have data
+
+                currValue === null || currValue === undefined && console.info(`${c.name} is missing data for question "${currentQuestion.question}"`)
+
                 targetValue = currentQuestion.answerMostExpensive // are we looking for the highest or the lowest?
                     ? currValue > targetValue
                         ? currValue
@@ -226,7 +229,7 @@ export default {
                     name: c.name,
                     value: currValue,
                     get isCorrect() {
-                        return this.value === targetValue
+                        return currValue !== null && currValue !== undefined && this.value === targetValue // [2] and if it doesnt have data, will be automatically not the correct option
                     },
                 }
             })

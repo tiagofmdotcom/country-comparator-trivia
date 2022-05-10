@@ -68,8 +68,8 @@ export default {
     }),
 
     async fetch() {
-        const apiKey = this.$nuxt.context.$config.NUMBEO_API_KEY;
-        this.supportedCountries = await fetchCountries(apiKey, this.$nuxt.context.$config.OFFLINE_MODE)
+        const apiKey = this.$config.NUMBEO_API_KEY;
+        this.supportedCountries = await fetchCountries(apiKey, this.$config.OFFLINE_MODE)
 
         // get 4 random countries
         const selectedCountries = await Promise.all(
