@@ -2,7 +2,7 @@
     <main class="container">
         <div>
             <head></head>
-            <h1>Welcome to Country Comparison trivia</h1>
+            <h1 data-testid="index-header">Welcome to Country Comparison trivia</h1>
             <a href="#" class="btn" role="button" @click="chooseGameMode">Start</a>
             <ModalDialog
                 v-show="showDialog"
