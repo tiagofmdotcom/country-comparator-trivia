@@ -1,6 +1,6 @@
 <!-- Please remove this file from your project -->
 <template>
-    <section>
+    <section class="quiz-container">
 
         <h1 v-if="countdownTimer">
             Get ready! {{countdown}}
@@ -302,6 +302,10 @@ export default {
 </script>
 
 <style scoped>
+.quiz-container {
+    width: 100%;
+}
+
 .col-2 {
     grid-template-columns: repeat(2, 1fr);
 }

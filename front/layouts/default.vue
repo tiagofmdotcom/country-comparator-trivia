@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <Nuxt />
+    <div class="wrapper placement-center">
+        <Nuxt class="container"/>
     </div>
 </template>
 <script>
@@ -9,8 +9,19 @@ export default {
 }
 </script>
 
-<style>
-@import '@picocss/pico/css/pico.css';
+<style lang="scss">
+@import "@picocss/pico/scss/pico.scss";
+.wrapper {
+    background-image: linear-gradient(-15deg, rgba(17,25,31,0.9) 50%, rgba(17,25,31,0.4) 100%), url(@/assets/images/bg.jpg);
+    background-color: #82d5fd;
+    background-size: 100% auto;
+    background-position-y: bottom;
+    height: 100vh;
+}
 
-/* @import "@picocss/pico/scss/pico.scss"; */
+
+.placement-center {
+    display: grid;
+    place-content: center;
+}
 </style>

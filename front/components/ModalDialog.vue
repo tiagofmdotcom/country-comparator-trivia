@@ -49,6 +49,11 @@ export default {
 
 <style scoped lang="scss">
 .dialog {
+
+    & > article {
+        width: 100%;
+    }
+
     & footer {
         display: grid;
         column-gap: 1rem;

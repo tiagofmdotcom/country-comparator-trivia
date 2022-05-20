@@ -1,24 +1,18 @@
 <template>
-    <div>
-        <div>
-            <p v-if="$fetchState.pending">Fetching countries</p>
-            <p v-else-if="$fetchState.error">An error occurred 😞</p>
-            <div v-else>
-                <Quiz
-                    v-if="!gameFinished"
-                    :game-mode="$route.params.gameMode"
-                    @quiz:finished="showResults"
-                />
-            </div>
-        </div>
+    <main class="main-game">
+        <p v-if="$fetchState.pending">Fetching countries</p>
+        <p v-else-if="$fetchState.error">An error occurred 😞</p>
+        <Quiz
+            v-else-if="!gameFinished"
+            :game-mode="$route.params.gameMode"
+            @quiz:finished="showResults"
+        />
 
         <CountrySelector v-if="false" :selected-countries="selectedCountries" />
         <EarthGlobe v-if="false" />
 
-        <div v-if="gameFinished">
-            <Report />
-        </div>
-    </div>
+        <Report  v-if="gameFinished"/>
+    </main>
 </template>
 
 <script>
