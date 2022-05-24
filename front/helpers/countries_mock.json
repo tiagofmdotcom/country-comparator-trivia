@@ -1,0 +1,358 @@
+[
+    {
+      "name": "Saint Lucia",
+      "currency": "USD",
+      "contributors12months": 11,
+      "monthLastUpdate": 4,
+      "contributors": 28,
+      "yearLastUpdate": 2022,
+      "prices": [
+        {
+          "data_points": 7,
+          "item_id": 1,
+          "lowest_price": 4.440250874174391,
+          "average_price": 5.5503135927179885,
+          "highest_price": 7.400418123623985,
+          "item_name": "Meal, Inexpensive Restaurant, Restaurants"
+        },
+        {
+          "data_points": 7,
+          "item_id": 2,
+          "lowest_price": 25.901463432683947,
+          "average_price": 62.90355405080387,
+          "highest_price": 92.5052265452998,
+          "item_name": "Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants"
+        },
+        {
+          "data_points": 7,
+          "item_id": 3,
+          "lowest_price": 7.400418123623985,
+          "average_price": 7.400418123623985,
+          "highest_price": 11.100627185435977,
+          "item_name": "McMeal at McDonalds (or Equivalent Combo Meal), Restaurants"
+        },
+        {
+          "data_points": 9,
+          "item_id": 5,
+          "lowest_price": 2.2201254370871957,
+          "average_price": 2.960167249449594,
+          "highest_price": 3.7002090618119925,
+          "item_name": "Imported Beer (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 10,
+          "item_id": 6,
+          "lowest_price": 0.9250522654529981,
+          "average_price": 1.107141717038275,
+          "highest_price": 1.480083624724797,
+          "item_name": "Coke/Pepsi (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 11,
+          "item_id": 7,
+          "lowest_price": 0.7400418123623985,
+          "average_price": 0.9149481490647858,
+          "highest_price": 1.1100627185435978,
+          "item_name": "Water (0.33 liter bottle) , Restaurants"
+        },
+        {
+          "data_points": 6,
+          "item_id": 8,
+          "lowest_price": 1.0566882105491835,
+          "average_price": 2.5207674233594197,
+          "highest_price": 3.8463579990014853,
+          "item_name": "Milk (regular), (1 liter), Markets"
+        },
+        {
+          "data_points": 7,
+          "item_id": 9,
+          "lowest_price": 0.4078782301620277,
+          "average_price": 0.826123177712326,
+          "highest_price": 1.1100627185435978,
+          "item_name": "Loaf of Fresh White Bread (500g), Markets"
+        },
+        {
+          "data_points": 5,
+          "item_id": 64,
+          "lowest_price": 55.50313592717988,
+          "average_price": 115.63153318162477,
+          "highest_price": 185.0104530905996,
+          "item_name": "1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes"
+        },
+        {
+          "data_points": 6,
+          "item_id": 66,
+          "lowest_price": 74.00418123623984,
+          "average_price": 124.88205583615475,
+          "highest_price": 277.51567963589946,
+          "item_name": "1 Pair of Men Leather Business Shoes, Clothing And Shoes"
+        }
+      ],
+      "index": 0
+    },
+    {
+      "name": "Saint Vincent And The Grenadines",
+      "currency": "USD",
+      "contributors12months": 9,
+      "monthLastUpdate": 1,
+      "contributors": 25,
+      "yearLastUpdate": 2022,
+      "prices": [
+        {
+          "data_points": 4,
+          "item_id": 1,
+          "lowest_price": 5.5503135927179885,
+          "average_price": 9.25052265452998,
+          "highest_price": 14.80083624724797,
+          "item_name": "Meal, Inexpensive Restaurant, Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 2,
+          "lowest_price": 55.50313592717988,
+          "average_price": 64.75365858170987,
+          "highest_price": 74.00418123623984,
+          "item_name": "Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 3,
+          "lowest_price": 7.400418123623985,
+          "average_price": 8.325470389076983,
+          "highest_price": 9.25052265452998,
+          "item_name": "McMeal at McDonalds (or Equivalent Combo Meal), Restaurants"
+        },
+        {
+          "data_points": 3,
+          "item_id": 5,
+          "lowest_price": 2.7751567963589943,
+          "average_price": 3.7002090618119925,
+          "highest_price": 3.7002090618119925,
+          "item_name": "Imported Beer (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 6,
+          "item_id": 6,
+          "lowest_price": 1.480083624724797,
+          "average_price": 1.7575993043606966,
+          "highest_price": 1.8501045309059962,
+          "item_name": "Coke/Pepsi (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 5,
+          "item_id": 7,
+          "lowest_price": 1.2950731716341974,
+          "average_price": 1.6188414645427467,
+          "highest_price": 1.8501045309059962,
+          "item_name": "Water (0.33 liter bottle) , Restaurants"
+        },
+        {
+          "data_points": 5,
+          "item_id": 8,
+          "lowest_price": 1.480083624724797,
+          "average_price": 1.9985107875832453,
+          "highest_price": 2.4437295576149927,
+          "item_name": "Milk (regular), (1 liter), Markets"
+        },
+        {
+          "data_points": 7,
+          "item_id": 9,
+          "lowest_price": 1.1100627185435978,
+          "average_price": 1.6713154846442215,
+          "highest_price": 1.8501045309059962,
+          "item_name": "Loaf of Fresh White Bread (500g), Markets"
+        },
+        {
+          "data_points": 8,
+          "item_id": 64,
+          "lowest_price": 74.00418123623984,
+          "average_price": 101.7557491998298,
+          "highest_price": 129.50731716341974,
+          "item_name": "1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes"
+        },
+        {
+          "data_points": 7,
+          "item_id": 66,
+          "lowest_price": 50.322843240643095,
+          "average_price": 111.00627185435977,
+          "highest_price": 185.0104530905996,
+          "item_name": "1 Pair of Men Leather Business Shoes, Clothing And Shoes"
+        }
+      ],
+      "index": 1
+    },
+    {
+      "name": "Marshall Islands",
+      "currency": "USD",
+      "contributors12months": 6,
+      "monthLastUpdate": 5,
+      "contributors": 10,
+      "yearLastUpdate": 2022,
+      "prices": [
+        {
+          "data_points": 1,
+          "item_id": 64,
+          "average_price": 40,
+          "item_name": "1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes"
+        },
+        {
+          "data_points": 4,
+          "item_id": 1,
+          "lowest_price": 10,
+          "average_price": 13.75,
+          "highest_price": 15.408474661063584,
+          "item_name": "Meal, Inexpensive Restaurant, Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 2,
+          "lowest_price": 20,
+          "average_price": 24,
+          "highest_price": 28,
+          "item_name": "Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants"
+        },
+        {
+          "data_points": 1,
+          "item_id": 66,
+          "average_price": 58,
+          "item_name": "1 Pair of Men Leather Business Shoes, Clothing And Shoes"
+        },
+        {
+          "data_points": 1,
+          "item_id": 3,
+          "average_price": 7,
+          "item_name": "McMeal at McDonalds (or Equivalent Combo Meal), Restaurants"
+        },
+        {
+          "data_points": 1,
+          "item_id": 5,
+          "average_price": 3,
+          "item_name": "Imported Beer (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 6,
+          "lowest_price": 1,
+          "average_price": 1,
+          "highest_price": 1,
+          "item_name": "Coke/Pepsi (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 7,
+          "lowest_price": 1,
+          "average_price": 1,
+          "highest_price": 1,
+          "item_name": "Water (0.33 liter bottle) , Restaurants"
+        },
+        {
+          "data_points": 2,
+          "item_id": 8,
+          "lowest_price": 1.79,
+          "average_price": 2.02,
+          "highest_price": 2.25,
+          "item_name": "Milk (regular), (1 liter), Markets"
+        },
+        {
+          "data_points": 2,
+          "item_id": 9,
+          "lowest_price": 2.99,
+          "average_price": 3.1950000000000003,
+          "highest_price": 3.4,
+          "item_name": "Loaf of Fresh White Bread (500g), Markets"
+        }
+      ],
+      "index": 2
+    },
+    {
+      "name": "Turkey",
+      "currency": "USD",
+      "contributors12months": 2002,
+      "monthLastUpdate": 5,
+      "contributors": 2038,
+      "yearLastUpdate": 2022,
+      "prices": [
+        {
+          "data_points": 344,
+          "item_id": 1,
+          "lowest_price": 1.9847701966907265,
+          "average_price": 3.3079503278178777,
+          "highest_price": 6.615900655635755,
+          "item_name": "Meal, Inexpensive Restaurant, Restaurants"
+        },
+        {
+          "data_points": 363,
+          "item_id": 2,
+          "lowest_price": 9.923850983453633,
+          "average_price": 16.53975163908939,
+          "highest_price": 56.23515557290392,
+          "item_name": "Meal for 2 People, Mid-range Restaurant, Three-course, Restaurants"
+        },
+        {
+          "data_points": 237,
+          "item_id": 3,
+          "lowest_price": 3.24179132126152,
+          "average_price": 3.6387453605996654,
+          "highest_price": 3.969540393381453,
+          "item_name": "McMeal at McDonalds (or Equivalent Combo Meal), Restaurants"
+        },
+        {
+          "data_points": 334,
+          "item_id": 5,
+          "lowest_price": 1.8524521835780117,
+          "average_price": 2.6463602622543023,
+          "highest_price": 4.300335426163241,
+          "item_name": "Imported Beer (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 525,
+          "item_id": 6,
+          "lowest_price": 0.3969540393381453,
+          "average_price": 0.6422737707002106,
+          "highest_price": 0.9923850983453633,
+          "item_name": "Coke/Pepsi (0.33 liter bottle), Restaurants"
+        },
+        {
+          "data_points": 332,
+          "item_id": 7,
+          "lowest_price": 0.1323180131127151,
+          "average_price": 0.22602024602669657,
+          "highest_price": 0.5954310590072179,
+          "item_name": "Water (0.33 liter bottle) , Restaurants"
+        },
+        {
+          "data_points": 708,
+          "item_id": 8,
+          "lowest_price": 0.49619254917268163,
+          "average_price": 0.7654032128731293,
+          "highest_price": 0.9923850983453633,
+          "item_name": "Milk (regular), (1 liter), Markets"
+        },
+        {
+          "data_points": 413,
+          "item_id": 9,
+          "lowest_price": 0.19847701966907266,
+          "average_price": 0.49779855995131234,
+          "highest_price": 0.9923850983453633,
+          "item_name": "Loaf of Fresh White Bread (500g), Markets"
+        },
+        {
+          "data_points": 233,
+          "item_id": 64,
+          "lowest_price": 33.07950327817878,
+          "average_price": 61.126486724758664,
+          "highest_price": 99.23850983453633,
+          "item_name": "1 Pair of Nike Running Shoes (Mid-Range), Clothing And Shoes"
+        },
+        {
+          "data_points": 271,
+          "item_id": 66,
+          "lowest_price": 19.847701966907266,
+          "average_price": 43.26265975720596,
+          "highest_price": 99.23850983453633,
+          "item_name": "1 Pair of Men Leather Business Shoes, Clothing And Shoes"
+        }
+      ],
+      "index": 3
+    }
+  ]
