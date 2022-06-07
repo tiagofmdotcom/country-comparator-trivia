@@ -1,18 +1,18 @@
 <!-- Please remove this file from your project -->
 <template>
-    <section>
-
-        <h1 v-if="countdownTimer">
+    <section class="quiz-container">
+        <h1 v-if="countdownTimer" data-testid="quiz-countdown">
             Get ready! {{countdown}}
         </h1>
 
         <div v-else>
             <h2>{{ currentQuestion.question }}</h2>
-            <div class="grid col-2">
+            <div class="grid col-2" data-testid="quiz-options-answers">
                 <button
                     v-for="(country, idx) in questionAnswers"
                     :key="idx"
                     :class="getClass(country)"
+                    :data-testid="TESTING_MODE && country.isCorrect && 'quiz-correct-option' || null"
                     @click="!selectedAnswer && verifyAnswer(country)"
                 >
                     {{ country.index + 1 }}. {{ country.name }}
@@ -24,6 +24,13 @@
             </div>
 
             <div :class="['answer-reaction', answerReactionClass]"></div>
+
+            <div v-if="TESTING_MODE">
+                <button class="primary" :disabled="!selectedAnswer" data-testid="quiz-next-question" @click="gotoNextQuestion">
+                    <!-- eslint-disable-next-line -->
+                    {{ ((questionIndex + 1) < selectedQuestions.length) ? 'Next >' : 'Finish'}}
+                </button>
+            </div>
 
             <progress
                 class="quiz-progress"
@@ -48,6 +55,27 @@ export default {
             return   seconds === 60 
                 ? (minutes + 1) + ":00"
                 : (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds
+        }
+    },
+
+    props: {
+        gameMode: {
+            type: String,
+            validator: (val) => {
+                return ['SUSPENSE', 'NORMAL'].includes(val);
+            },
+            default: 'NORMAL'
+        },
+
+        amountOfQuestions: {
+            type: Number,
+            default: 10,
+        },
+
+        // eslint-disable-next-line vue/prop-name-casing
+        TESTING_MODE: {
+            type: Boolean,
+            default: false
         }
     },
 
@@ -117,12 +145,16 @@ export default {
             id: p.item_id,
             name: p.item_name,
         }))
-        this.generateQuestions()
+        this.generateQuestions(this.amountOfQuestions)
     },
 
     mounted() {
-        this.countdownTimer = setInterval(() => (this.countdown -= 1), 1000);
-        setTimeout(this.startQuiz, 6000);
+        if(!this.TESTING_MODE) {
+            this.countdownTimer = setInterval(() => (this.countdown -= 1), 1000);
+            setTimeout(this.startQuiz, 6000);
+        } else {
+            this.startQuiz();
+        }
     },
 
     methods: {
@@ -139,8 +171,13 @@ export default {
                 this.selectedAnswer &&
                 Number.isInteger(this.selectedAnswer.index)
             ) {
+                if(this.selectedAnswer?.index === country.index && this.gameMode === 'SUSPENSE') return 'primary'; // SUSPENSE game mode doesnt reveal correct/incorrect answers
+
                 // if user selected an answer
-                if (this.selectedAnswer?.index === country.index) {
+                if (
+                    this.selectedAnswer?.index === country.index && 
+                    this.gameMode === 'NORMAL'
+                ) {
                     // and this button matches the selected answer
                     if (this.selectedAnswer.isCorrect) {
                         // use .success if correct, or .error otherwise
@@ -152,7 +189,8 @@ export default {
                     // and this button matches the actual correct answer, use .success
                 } else if (
                     this.selectedAnswer?.index !== country.index &&
-                    country.isCorrect
+                    country.isCorrect &&
+                    this.gameMode === 'NORMAL'
                 ) {
                     return 'success'
                 }
@@ -171,12 +209,14 @@ export default {
 
             this.$store.commit('quiz/ADD_QUESTION_ANSWER', choosenAnswer)
 
-            this.answerReactionClass = answer.isCorrect ? 'correct' : 'incorrect'
+            this.answerReactionClass = this.gameMode === 'NORMAL' && (answer.isCorrect ? 'correct' : 'incorrect')
             // TODO: Perform some sort of suspense animation to hightlight correct/wrong answers
 
-            setTimeout(() => {
-                this.questionIndex++;
-            }, 1500)
+            if(!this.TESTING_MODE) {
+                setTimeout(() => {
+                    this.gotoNextQuestion();
+                }, 1500)
+            }
         },
 
         setAnswers(questionIndex) {
@@ -196,7 +236,10 @@ export default {
             const questionAnswers = this.selectedCountries.map((c) => {
                 const currValue = c.prices.find(
                     (p) => p.item_id === currentQuestion.id
-                ).average_price
+                )?.average_price; // [1] some items might not have data
+
+                currValue === null || currValue === undefined && console.info(`${c.name} is missing data for question "${currentQuestion.question}"`)
+
                 targetValue = currentQuestion.answerMostExpensive // are we looking for the highest or the lowest?
                     ? currValue > targetValue
                         ? currValue
@@ -210,7 +253,7 @@ export default {
                     name: c.name,
                     value: currValue,
                     get isCorrect() {
-                        return this.value === targetValue
+                        return currValue !== null && currValue !== undefined && this.value === targetValue // [2] and if it doesnt have data, will be automatically not the correct option
                     },
                 }
             })
@@ -228,12 +271,12 @@ export default {
         },
 
 
-        generateQuestions() {
+        generateQuestions(amount) {
             const selectedQuestions = this.comparationItems
                 .map((x) => ({ x, r: Math.random() }))
                 .sort((a, b) => a.r - b.r)
                 .map((a) => a.x)
-                .slice(0, 10)
+                .slice(0, amount)
                 .map((q) => {
                     const isMost = !!this.genRandomNumber(0, 1); // random value rule (highest or lowest)
                     const questionTxt = `Which country has the ${
@@ -277,12 +320,20 @@ export default {
             if(this.timer.start === 0) return; // the timer is not running
             this.timer.end = new Date().getTime();
             clearInterval(this.timer.ref);
-        }        
+        },
+
+        gotoNextQuestion() {
+            this.questionIndex++;
+        }
     },
 }
 </script>
 
 <style scoped>
+.quiz-container {
+    width: 100%;
+}
+
 .col-2 {
     grid-template-columns: repeat(2, 1fr);
 }

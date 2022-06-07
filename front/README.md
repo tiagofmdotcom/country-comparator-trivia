@@ -1,5 +1,7 @@
 # country-compare
 
+proto: https://www.figma.com/file/qneOfOlfY6EnbJrhtLbEgK/mockup-%2F-proto---COUNTRY-TRIVIA?node-id=73%3A300
+
 ## Build Setup
 
 ```bash

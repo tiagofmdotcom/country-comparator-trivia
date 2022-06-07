@@ -9,71 +9,20 @@ src="https://clipart.world/wp-content/uploads/2020/12/Simple-Trophy-clipart-tran
         </div>
         <h1>Game Stats</h1>
         <hr>
-        <RadarChart :data="countriesPricesChart" :options="options"/>
+        <LineChart :data="countriesPricesChart" :options="options"/>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
 
-import RadarChart from '@/components/RadarChart'
+import LineChart from '@/components/LineChart'
 
 export default {
     name: 'GameReport',
-    components: { RadarChart },
+    components: { LineChart },
     
     data: () => ({
-
-        chartdata: {
-            labels: [
-                /*                 'Eating',
-                'Drinking',
-                'Sleeping',
-                'Designing',
-                'Coding',
-                'Cycling',
-                'Running', */
-            ],
-            datasets: [
-                /* {
-                    label: 'My First dataset',
-                    backgroundColor: 'rgba(179,181,198,0.2)',
-                    borderColor: 'rgba(179,181,198,1)',
-                    pointBackgroundColor: 'rgba(179,181,198,1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(179,181,198,1)',
-                    data: [65, 59, 90, 81, 56, 55, 40],
-                },
-                {
-                    label: 'My Second dataset',
-                    backgroundColor: 'rgba(255,99,132,0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    pointBackgroundColor: 'rgba(255,99,132,1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(255,99,132,1)',
-                    data: [28, 48, 40, 19, 96, 27, 100],
-                }, */
-            ],
-        },
-
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            /* scales: {
-                r: {
-                    display: false
-                }
-            }, */
-            elements: {
-                point: {
-                    radius: 1,
-                },
-                line: {
-                    borderWidth: 1,
-                },
-            },
-        },        
+  
     }),
 
     computed: {
@@ -84,21 +33,22 @@ export default {
         }),
 
         countriesPricesChart() {
+            const colors = ['#feb300', '#ba00ff', '#007900', '#ff4600']
+
             return {
                 labels: this.priceCategories,
                 datasets: Object.keys(this.countriesFiltered).map(
-                    (country) => ({
+                    (country, idx) => ({
                         label: country,
-                        backgroundColor: `#${Math.floor(
-                            Math.random() * 16777215
-                        ).toString(16)}44`, // 'rgba(255,99,132,0.2)',
-                        borderColor: 'rgba(179,181,198,1)',
+                        tension: 0.1,
+                        borderColor: colors[idx],
+                        backgroundColor: colors[idx],
                         pointBackgroundColor: 'rgba(179,181,198,1)',
                         pointBorderColor: '#fff',
                         pointHoverBackgroundColor: '#fff',
                         pointHoverBorderColor: 'rgba(179,181,198,1)',
                         data: this.priceCategories.map(
-                            (pc) => this.countriesFiltered[country][pc].avg
+                            (pc) => this.countriesFiltered[country][pc]?.avg
                         ),
                     })
                 ),
