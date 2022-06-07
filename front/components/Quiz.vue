@@ -69,7 +69,7 @@ export default {
 
         amountOfQuestions: {
             type: Number,
-            default: 2,
+            default: 10,
         },
 
         // eslint-disable-next-line vue/prop-name-casing
